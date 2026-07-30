@@ -111,3 +111,40 @@ function createHeart() {
 }
 
 setInterval(createHeart, 800);
+
+// TYPING EFFECT FOR LETTER
+const letterMessage = `Happy 12th Birthday to my sweetest little sister! 🎂💖\n\nWatching you grow up into such a kind, polite, and bright girl makes me so proud every single day.\n\nMay your school days be fun, your dreams come true, and your heart stay filled with laughter and love.\n\nNo matter how big you grow, you will always be my tiny Chuti! 💕✨`;
+
+let charIndex = 0;
+let isTypingStarted = false;
+
+function startTypingEffect() {
+    const typedTextElement = document.getElementById("typedText");
+    if (!typedTextElement || isTypingStarted) return;
+    
+    isTypingStarted = true;
+    typedTextElement.innerText = "";
+
+    function typeChar() {
+        if (charIndex < letterMessage.length) {
+            typedTextElement.innerText += letterMessage.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeChar, 35); // Typing Speed (35ms)
+        }
+    }
+    typeChar();
+}
+
+// NEXT PAGE FUNCTION WITH TYPING TRIGGER
+function nextPage() {
+    if (currentPage < pages.length - 1) {
+        pages[currentPage].classList.remove("active");
+        currentPage++;
+        pages[currentPage].classList.add("active");
+
+        // Message page (index 4) එකට ආව ගමන් typing effect එක start වෙනවා
+        if (pages[currentPage].id === "message") {
+            startTypingEffect();
+        }
+    }
+}
