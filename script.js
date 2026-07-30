@@ -2,8 +2,10 @@
 window.addEventListener("load", () => {
     setTimeout(() => {
         const loader = document.getElementById("loading");
-        loader.style.opacity = "0";
-        setTimeout(() => loader.style.display = "none", 500);
+        if (loader) {
+            loader.style.opacity = "0";
+            setTimeout(() => loader.style.display = "none", 500);
+        }
     }, 2000);
 });
 
@@ -25,28 +27,30 @@ const musicBtn = document.getElementById("musicControl");
 let isPlaying = false;
 
 document.addEventListener("click", () => {
-    if (!isPlaying) {
+    if (!isPlaying && music) {
         music.volume = 0.5;
         music.play().then(() => {
             isPlaying = true;
-            musicBtn.innerHTML = "⏸️";
+            if (musicBtn) musicBtn.innerHTML = "⏸️";
         }).catch(err => console.log("Autoplay blocked:", err));
     }
 }, { once: true });
 
-musicBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    if (isPlaying) {
-        music.pause();
-        musicBtn.innerHTML = "🎵";
-    } else {
-        music.play();
-        musicBtn.innerHTML = "⏸️";
-    }
-    isPlaying = !isPlaying;
-});
+if (musicBtn) {
+    musicBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (isPlaying) {
+            music.pause();
+            musicBtn.innerHTML = "🎵";
+        } else {
+            music.play();
+            musicBtn.innerHTML = "⏸️";
+        }
+        isPlaying = !isPlaying;
+    });
+}
 
-// PHOTO SLIDESHOW (Direct Root Images)
+// PHOTO SLIDESHOW (Root directory images)
 const photos = [
     "1.png",
     "2.png",
