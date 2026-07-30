@@ -9,9 +9,24 @@ window.addEventListener("load", () => {
     }, 2000);
 });
 
-// PAGE NAVIGATION
+// PAGE NAVIGATION & MUSIC START
 let currentPage = 0;
 const pages = document.querySelectorAll(".page");
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicControl");
+let isPlaying = false;
+
+function startExperience() {
+    // Music Auto-play trigger
+    if (music && !isPlaying) {
+        music.volume = 0.5;
+        music.play().then(() => {
+            isPlaying = true;
+            if (musicBtn) musicBtn.innerHTML = "⏸️";
+        }).catch(err => console.log("Autoplay prevented:", err));
+    }
+    nextPage();
+}
 
 function nextPage() {
     if (currentPage < pages.length - 1) {
@@ -21,21 +36,7 @@ function nextPage() {
     }
 }
 
-// MUSIC SYSTEM
-const music = document.getElementById("bgMusic");
-const musicBtn = document.getElementById("musicControl");
-let isPlaying = false;
-
-document.addEventListener("click", () => {
-    if (!isPlaying && music) {
-        music.volume = 0.5;
-        music.play().then(() => {
-            isPlaying = true;
-            if (musicBtn) musicBtn.innerHTML = "⏸️";
-        }).catch(err => console.log("Autoplay blocked:", err));
-    }
-}, { once: true });
-
+// MUSIC TOGGLE BUTTON
 if (musicBtn) {
     musicBtn.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -50,7 +51,7 @@ if (musicBtn) {
     });
 }
 
-// PHOTO SLIDESHOW (Root directory images)
+// CLICKABLE PHOTO GALLERY LOGIC
 const photos = [
     "1.png",
     "2.png",
@@ -61,18 +62,31 @@ const photos = [
 
 let photoIndex = 0;
 
-setInterval(() => {
+function updatePhoto() {
     const img = document.getElementById("photoSlider");
+    const counter = document.getElementById("photoCounter");
     if (!img) return;
 
-    photoIndex = (photoIndex + 1) % photos.length;
-    img.style.opacity = "0";
+    img.style.opacity = "0.2";
 
     setTimeout(() => {
         img.src = photos[photoIndex];
         img.style.opacity = "1";
-    }, 500);
-}, 3500);
+        if (counter) {
+            counter.innerText = `${photoIndex + 1} / ${photos.length}`;
+        }
+    }, 200);
+}
+
+function nextPhoto() {
+    photoIndex = (photoIndex + 1) % photos.length;
+    updatePhoto();
+}
+
+function prevPhoto() {
+    photoIndex = (photoIndex - 1 + photos.length) % photos.length;
+    updatePhoto();
+}
 
 // FLOATING HEARTS EFFECT
 function createHeart() {
