@@ -1,574 +1,219 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+:root {
+    --bg-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #feada6 100%);
+    --card-bg: rgba(255, 255, 255, 0.35);
+    --card-border: rgba(255, 255, 255, 0.6);
+    --text-primary: #4a2e35;
+    --accent-color: #ff3366;
+    --btn-gradient: linear-gradient(45deg, #ff416c, #ff4b2b);
+    --shadow: 0 15px 35px rgba(255, 75, 110, 0.2);
 }
 
-
-body{
-
-    overflow:hidden;
-    background:linear-gradient(
-        135deg,
-        #ffb6e6,
-        #b9a7ff
-    );
-
-    color:white;
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
 }
 
-
-
-.pages{
-
-    width:100%;
-    height:100vh;
-
+body {
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    overflow: hidden;
+    color: var(--text-primary);
 }
 
-
-
-
-/* LOADING */
-
-#loading{
-
-    position:fixed;
-
-    width:100%;
-    height:100vh;
-
-    background:
-    linear-gradient(
-        135deg,
-        #ff6fb5,
-        #9b7bff
-    );
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    z-index:9999;
-
+/* LOADING SCREEN */
+#loading {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: white;
 }
 
-
-
-.loading-box{
-
-    text-align:center;
-
-    animation:zoom 2s infinite;
-
+.loader-card {
+    text-align: center;
+    animation: float 2s infinite ease-in-out;
 }
 
-
-.heart{
-
-    font-size:70px;
-
+.pulse-heart {
+    font-size: 70px;
+    animation: pulse 1.2s infinite;
 }
 
-
-.loading-box h2{
-
-    font-size:28px;
-
+/* PAGES CONTAINER */
+.pages-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
 }
 
-
-
-.loading-box p{
-
-    font-size:20px;
-
+.page {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
-
-
-
-/* PAGE SYSTEM */
-
-
-.page{
-
-    position:absolute;
-
-    width:100%;
-    height:100vh;
-
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-
-    text-align:center;
-
-
-    padding:30px;
-
-
-    opacity:0;
-
-    transform:translateX(100%);
-
-
-    transition:
-    all 0.8s ease;
-
-
+.page.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) translateY(0);
 }
 
-
-
-
-.page.active{
-
-    opacity:1;
-
-    transform:translateX(0);
-
+/* GLASS CARD DESIGN */
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--card-border);
+    border-radius: 28px;
+    padding: 40px 30px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--shadow);
 }
 
-
-
-
-
-
-/* TEXT */
-
-
-h1{
-
-    font-size:65px;
-
-    margin:20px;
-
-    text-shadow:
-
-    0 0 10px white,
-    0 0 25px pink;
-
-
+.badge {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent-color);
+    display: inline-block;
+    margin-bottom: 15px;
 }
 
-
-
-h2{
-
-    font-size:35px;
-
+h1, h2, h3 {
+    font-family: 'Fredoka', sans-serif;
 }
 
-
-
-h3{
-
-    font-size:28px;
-
+h1 {
+    font-size: 38px;
+    line-height: 1.2;
+    margin-bottom: 15px;
 }
 
-
-
-p{
-
-    font-size:22px;
-
-    margin:20px;
-
+.title-lg {
+    font-size: 50px;
+    color: var(--accent-color);
+    text-shadow: 0 4px 15px rgba(255, 51, 102, 0.3);
 }
 
-
-
-
-
-
-
-/* BUTTON */
-
-
-button{
-
-
-    margin-top:30px;
-
-    padding:16px 40px;
-
-
-    border:none;
-
-    border-radius:50px;
-
-
-    background:
-
-    linear-gradient(
-        45deg,
-        #ff4fa3,
-        #ff91d0
-    );
-
-
-    color:white;
-
-    font-size:18px;
-
-
-    cursor:pointer;
-
-
-    box-shadow:
-
-    0 0 20px pink;
-
-
-    transition:.3s;
-
-
+.highlight {
+    color: var(--accent-color);
 }
 
-
-
-button:hover{
-
-
-    transform:scale(1.1);
-
+p {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    opacity: 0.9;
 }
 
-
-
-
-
-
-
-
-/* FLOATING STARS */
-
-
-.stars{
-
-    position:absolute;
-
-    top:80px;
-
-    font-size:45px;
-
-    animation:floating 3s infinite;
-
+/* BUTTON DESIGN */
+.btn-primary {
+    background: var(--btn-gradient);
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 65, 108, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-
-
-
-/* BALLOONS */
-
-
-.balloons{
-
-    font-size:70px;
-
-    animation:floating 4s infinite;
-
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 25px rgba(255, 65, 108, 0.5);
 }
 
-
-
-@keyframes floating{
-
-
-50%{
-
-transform:
-translateY(-40px);
-
+/* CAKE ANIMATION */
+.cake-emoji {
+    font-size: 110px;
+    margin: 15px 0;
+    animation: cakeBounce 2s infinite ease-in-out;
 }
 
-
+/* GALLERY PHOTO FRAME */
+.photo-frame {
+    width: 260px;
+    height: 320px;
+    margin: 0 auto 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 4px solid white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-
-
-
-
-
-
-
-/* CAKE */
-
-
-.cake{
-
-
-    font-size:150px;
-
-
-    animation:
-
-    cakeMove 2s infinite;
-
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
 }
 
-
-
-@keyframes cakeMove{
-
-
-50%{
-
-transform:
-
-translateY(-20px)
-
-scale(1.1);
-
+/* LETTER BODY */
+.letter-body {
+    text-align: left;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
 }
 
-
+.letter-body p {
+    font-size: 15px;
+    margin-bottom: 12px;
 }
-
-
-
-
-
-
-
-
-/* GALLERY */
-
-
-.photo-box{
-
-
-    width:350px;
-
-    height:450px;
-
-    overflow:hidden;
-
-
-    border-radius:30px;
-
-
-    box-shadow:
-
-    0 0 40px white;
-
-
-}
-
-
-
-.photo-box img{
-
-
-    width:100%;
-
-    height:100%;
-
-
-    object-fit:cover;
-
-
-    animation:
-
-    photoZoom 5s infinite;
-
-
-}
-
-
-
-
-@keyframes photoZoom{
-
-
-50%{
-
-transform:scale(1.08);
-
-}
-
-
-}
-
-
-
-
-
-
-
-
-/* LETTER */
-
-
-.letter{
-
-
-    max-width:650px;
-
-
-    padding:40px;
-
-
-    border-radius:30px;
-
-
-    background:
-
-    rgba(255,255,255,.18);
-
-
-    backdrop-filter:
-
-    blur(15px);
-
-
-    box-shadow:
-
-    0 0 30px rgba(255,255,255,.5);
-
-
-}
-
-
-
-
-
-
-
-
-/* FINAL */
-
-
-.fireworks{
-
-
-    font-size:80px;
-
-    animation:
-
-    fire 1s infinite;
-
-
-}
-
-
-@keyframes fire{
-
-
-50%{
-
-transform:
-
-scale(1.3);
-
-}
-
-
-}
-
-
-
-
-
-
 
 /* MUSIC BUTTON */
-
-
-#musicControl{
-
-
-    position:fixed;
-
-
-    right:25px;
-
-    bottom:25px;
-
-
-    width:65px;
-
-    height:65px;
-
-
-    border-radius:50%;
-
-
-    z-index:20;
-
-
-    padding:0;
-
-
-    font-size:25px;
-
-
+#musicControl {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
 
-
-
-
-
-
-
-
-/* MOBILE */
-
-
-@media(max-width:600px){
-
-
-h1{
-
-font-size:42px;
-
+/* ANIMATIONS */
+@keyframes float {
+    50% { transform: translateY(-10px); }
 }
 
-
-
-h2{
-
-font-size:25px;
-
+@keyframes pulse {
+    50% { transform: scale(1.15); }
 }
 
-
-
-h3{
-
-font-size:22px;
-
+@keyframes cakeBounce {
+    50% { transform: translateY(-15px) scale(1.05); }
 }
 
-
-
-.photo-box{
-
-width:280px;
-
-height:380px;
-
-}
-
-
-.cake{
-
-font-size:110px;
-
-}
-
-
+@media (max-width: 480px) {
+    .glass-card {
+        padding: 30px 20px;
+    }
+    h1 { font-size: 32px; }
+    .title-lg { font-size: 40px; }
+    .photo-frame { width: 220px; height: 280px; }
 }
