@@ -1,321 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Happy Birthday Chuti 💖</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 12th Birthday Chuti 💖</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-
-
 <body>
 
-
-<!-- LOADING SCREEN -->
-
-<div id="loading">
-
-    <div class="loading-box">
-
-        <div class="heart">💖</div>
-
-        <h2>Creating A Special Memory...</h2>
-
-        <p>For Chuti ✨</p>
-
+    <!-- LOADING SCREEN -->
+    <div id="loading">
+        <div class="loader-card">
+            <div class="pulse-heart">🌸</div>
+            <h2>Wrapping Your Surprise...</h2>
+            <p>Made with love for Chuti ✨</p>
+        </div>
     </div>
 
-</div>
-
-
-
-<!-- MUSIC -->
-
-<audio id="bgMusic" loop preload="auto">
-
-    <source src="song.mp3" type="audio/mp3">
-
-</audio>
-
-
-
-<button id="musicControl">
-🎵
-</button>
-
-
-
-
-<!-- PAGE CONTAINER -->
-
-<div class="pages">
-
-
-
-<!-- PAGE 1 : WELCOME -->
-
-<section class="page active" id="welcome">
-
-
-<div class="stars">
-✨ ✨ ✨
-</div>
-
-
-<h3>
-A Little Surprise For You
-</h3>
-
-
-<h1>
-Chuti 💖
-</h1>
-
-
-<p>
-Someone special is celebrating today...
-</p>
-
-
-<button onclick="nextPage()">
-
-Enter Celebration ✨
-
-</button>
-
-
-</section>
-
-
-
-
-
-<!-- PAGE 2 : HERO -->
-
-
-<section class="page" id="hero">
-
-
-<h2>
-A Special Birthday Celebration For
-</h2>
-
-
-<h1>
-Chuti 💖
-</h1>
-
-
-<h3>
-🎂 Happy 12th Birthday 🎂
-</h3>
-
-
-
-<div class="balloons">
-
-🎈 🎈 🎈 🎈
-
-</div>
-
-
-
-<button onclick="nextPage()">
-
-Start The Magic 🌸
-
-</button>
-
-
-</section>
-
-
-
-
-
-
-
-<!-- PAGE 3 : CAKE -->
-
-
-<section class="page" id="cakePage">
-
-
-<h1>
-🎂 Birthday Cake 🎂
-</h1>
-
-
-
-<div class="cake">
-
-🎂
-
-</div>
-
-
-<p>
-
-Make a beautiful wish ✨
-
-</p>
-
-
-<button onclick="nextPage()">
-
-Open Memories 📸
-
-</button>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- PAGE 4 : PHOTOS -->
-
-
-<section class="page" id="gallery">
-
-<h1>
-Beautiful Memories 📸
-</h1>
-
-
-<div class="photo-box">
-
-<img id="photoSlider" src="image">
-
-</div>
-
-
-<button onclick="nextPage()">
-Continue 💕
-</button>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- PAGE 5 : MESSAGE -->
-
-
-<section class="page" id="message">
-
-
-<div class="letter">
-
-
-<h1>
-💌 Birthday Message
-</h1>
-
-
-<p>
-
-Dear Chuti,
-
-<br><br>
-
-Every birthday is a new beginning,
-and today is the start of another amazing
-chapter in your life.
-
-<br><br>
-
-Happy 12th Birthday! 🎂💖
-
-<br><br>
-
-May your days always be filled with
-love, laughter and beautiful dreams.
-
-✨
-
-</p>
-
-
-</div>
-
-
-
-<button onclick="nextPage()">
-
-Final Surprise 🎆
-
-</button>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- PAGE 6 : FINAL -->
-
-
-<section class="page" id="final">
-
-
-<h1>
-
-🎉 Happy Birthday Chuti 🎉
-
-</h1>
-
-
-<p>
-
-Keep smiling and shining always 💖✨
-
-</p>
-
-
-
-<div class="fireworks">
-
-✨ 🎆 ✨ 🎆 ✨
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-</div>
-
-
-
-
-<script src="script.js"></script>
-
-
+    <!-- BACKGROUND MUSIC -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="song.mp3" type="audio/mp3">
+    </audio>
+
+    <button id="musicControl" aria-label="Music Toggle">🎵</button>
+
+    <!-- MAIN CONTAINER -->
+    <main class="pages-container">
+
+        <!-- PAGE 1: WELCOME -->
+        <section class="page active" id="welcome">
+            <div class="glass-card">
+                <span class="badge">Special Day ✨</span>
+                <h1>Happy Birthday, <br><span class="highlight">Chuti! 🌸</span></h1>
+                <p>To the sweetest little sister who brings endless happiness into our lives.</p>
+                <button class="btn-primary" onclick="nextPage()">Unwrap Celebration 🎁</button>
+            </div>
+        </section>
+
+        <!-- PAGE 2: HERO WISH -->
+        <section class="page" id="hero">
+            <div class="glass-card">
+                <div class="floating-icons">🎈 🌸 🎂 🎈</div>
+                <h2>Turning 12 Today!</h2>
+                <h1 class="title-lg">Chuti 💖</h1>
+                <p>May your special day be filled with warm smiles, sweet moments, and unlimited joy!</p>
+                <button class="btn-primary" onclick="nextPage()">Make A Wish 🕯️</button>
+            </div>
+        </section>
+
+        <!-- PAGE 3: CAKE -->
+        <section class="page" id="cakePage">
+            <div class="glass-card">
+                <h2>Blow The Candles 🎂</h2>
+                <div class="cake-wrapper">
+                    <div class="cake-emoji">🎂</div>
+                </div>
+                <p>Close your eyes, make a beautiful wish for your 12th year! ✨</p>
+                <button class="btn-primary" onclick="nextPage()">View Our Memories 📸</button>
+            </div>
+        </section>
+
+        <!-- PAGE 4: GALLERY -->
+        <section class="page" id="gallery">
+            <div class="glass-card gallery-card">
+                <h2>Precious Memories 📸</h2>
+                <div class="photo-frame">
+                    <img id="photoSlider" src="1.png" alt="Chuti Memory">
+                </div>
+                <button class="btn-primary" onclick="nextPage()">Read My Letter 💌</button>
+            </div>
+        </section>
+
+        <!-- PAGE 5: LETTER -->
+        <section class="page" id="message">
+            <div class="glass-card letter-card">
+                <h2>Dearest Chuti 💌</h2>
+                <div class="letter-body">
+                    <p>Happy 12th Birthday to my beloved little sister! 🎂💖</p>
+                    <p>Watching you grow into such a kind, talented, and beautiful girl makes me so proud every single day.</p>
+                    <p>May this new year bring you all the happiness in the world, success in your studies, and all the laughter you deserve.</p>
+                    <p>No matter how big you grow, you will always be my little Chuti! 💕✨</p>
+                </div>
+                <button class="btn-primary" onclick="nextPage()">Grand Surprise 🎆</button>
+            </div>
+        </section>
+
+        <!-- PAGE 6: FINAL -->
+        <section class="page" id="final">
+            <div class="glass-card final-card">
+                <div class="sparkles">✨ 🎆 ✨</div>
+                <h1>🎉 Happy 12th Birthday! 🎉</h1>
+                <p class="subtitle">Keep shining bright and smiling always, Chuti 💖</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
 </body>
-
 </html>
