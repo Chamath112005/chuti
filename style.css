@@ -263,3 +263,33 @@ p {
     font-size: 14px;
     color: var(--text-primary);
 }
+
+/* TYPING EFFECT STYLES */
+.letter-body {
+    text-align: left;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    min-height: 180px;
+    position: relative;
+}
+
+#typedText {
+    font-size: 15px;
+    line-height: 1.6;
+    white-space: pre-line; /* \n (Line breaks) හරියට පෙන්නන්න */
+    display: inline;
+}
+
+.cursor {
+    font-weight: bold;
+    color: var(--accent-color);
+    font-size: 18px;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
