@@ -1,165 +1,434 @@
-// Loading screen
+// ================================
+// LOADING SCREEN
+// ================================
 
-window.onload=function(){
+window.addEventListener("load",()=>{
 
-setTimeout(()=>{
+    setTimeout(()=>{
 
-document.getElementById("loader").style.display="none";
+        document.getElementById("loading")
+        .style.display="none";
 
-},2500);
+    },2500);
 
-}
-
-
-
-// Music
-
-let music=document.getElementById("music");
-
-
-function startMusic(){
-
-music.play();
-
-}
+});
 
 
 
-let playing=false;
 
 
-document.getElementById("musicBtn")
-.onclick=function(){
-
-if(playing){
-
-music.pause();
-
-this.innerHTML="🎵";
-
-}
-
-else{
-
-music.play();
-
-this.innerHTML="⏸️";
-
-}
+// ================================
+// PAGE NAVIGATION
+// ================================
 
 
-playing=!playing;
+let currentPage = 0;
+
+
+const pages = document.querySelectorAll(".page");
+
+
+
+function nextPage(){
+
+    pages[currentPage]
+    .classList.remove("active");
+
+
+    currentPage++;
+
+
+    if(currentPage >= pages.length){
+
+        currentPage = pages.length-1;
+
+    }
+
+
+    pages[currentPage]
+    .classList.add("active");
 
 }
 
 
 
 
+// ================================
+// MUSIC CONTROL
+// ================================
 
-// Image slideshow
+
+const music =
+document.getElementById("bgMusic");
 
 
-let images=[
+const musicBtn =
+document.getElementById("musicControl");
+
+
+let musicPlaying=false;
+
+
+
+musicBtn.onclick=function(){
+
+
+    if(musicPlaying){
+
+        music.pause();
+
+        musicBtn.innerHTML="🎵";
+
+    }
+
+    else{
+
+        music.play();
+
+        musicBtn.innerHTML="⏸️";
+
+    }
+
+
+    musicPlaying=!musicPlaying;
+
+
+};
+
+
+
+
+
+// Start music after first button
+
+document.querySelectorAll("button")[0]
+.addEventListener("click",()=>{
+
+
+    music.play()
+    .catch(()=>{});
+
+
+    musicPlaying=true;
+
+
+    musicBtn.innerHTML="⏸️";
+
+
+});
+
+
+
+
+
+
+
+
+
+// ================================
+// PHOTO SLIDESHOW
+// ================================
+
+
+let photos=[
 
 "photo1.jpg",
+
 "photo2.jpg",
+
 "photo3.jpg",
+
 "photo4.jpg",
+
 "photo5.jpg"
 
 ];
 
 
-let index=0;
+let photoIndex=0;
 
 
 setInterval(()=>{
 
-index++;
 
-if(index>=images.length)
-index=0;
-
-
-document.getElementById("slide").src=
-"assets/images/"+images[index];
+    let img =
+    document.getElementById("photoSlider");
 
 
-},3000);
+    if(!img) return;
 
 
 
+    photoIndex++;
 
 
-// Simple fireworks/confetti
+    if(photoIndex>=photos.length){
+
+        photoIndex=0;
+
+    }
 
 
-const canvas=document.getElementById("fireworks");
 
-const ctx=canvas.getContext("2d");
+    img.style.opacity="0";
 
 
-canvas.width=innerWidth;
 
-canvas.height=innerHeight;
+    setTimeout(()=>{
+
+
+        img.src =
+        "assets/images/"
+        +photos[photoIndex];
+
+
+        img.style.opacity="1";
+
+
+    },500);
+
+
+
+},3500);
+
+
+
+
+
+
+
+
+
+// ================================
+// FIREWORKS SYSTEM
+// ================================
+
+
+
+const canvas =
+document.createElement("canvas");
+
+
+document.body.appendChild(canvas);
+
+
+
+canvas.style.position="fixed";
+
+canvas.style.top="0";
+
+canvas.style.left="0";
+
+canvas.style.pointerEvents="none";
+
+canvas.style.zIndex="5";
+
+
+
+const ctx =
+canvas.getContext("2d");
+
+
+
+function resize(){
+
+canvas.width =
+window.innerWidth;
+
+
+canvas.height =
+window.innerHeight;
+
+}
+
+
+resize();
+
+
+window.addEventListener(
+"resize",
+resize
+);
+
+
 
 
 let particles=[];
 
 
-function firework(){
 
-for(let i=0;i<50;i++){
+function createFirework(){
+
+
+let x =
+Math.random()*canvas.width;
+
+
+let y =
+Math.random()*canvas.height/2;
+
+
+
+for(let i=0;i<60;i++){
+
 
 particles.push({
 
-x:innerWidth/2,
+x:x,
 
-y:innerHeight/2,
+y:y,
 
-dx:(Math.random()-0.5)*8,
+speedX:
+(Math.random()-0.5)*8,
 
-dy:(Math.random()-0.5)*8,
+speedY:
+(Math.random()-0.5)*8,
+
 
 life:100
 
 });
 
-}
 
 }
 
 
-function animate(){
+}
 
-ctx.clearRect(0,0,canvas.width,canvas.height);
+
+
+
+function animateFireworks(){
+
+
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
 
 
 particles.forEach((p)=>{
 
+
+ctx.beginPath();
+
+
+ctx.arc(
+p.x,
+p.y,
+3,
+0,
+Math.PI*2
+);
+
+
 ctx.fillStyle="white";
 
-ctx.fillRect(p.x,p.y,4,4);
+
+ctx.fill();
 
 
-p.x+=p.dx;
 
-p.y+=p.dy;
+p.x += p.speedX;
+
+
+p.y += p.speedY;
+
 
 p.life--;
+
 
 });
 
 
-particles=
-particles.filter(p=>p.life>0);
+
+particles =
+particles.filter(
+p=>p.life>0
+);
 
 
-requestAnimationFrame(animate);
+
+requestAnimationFrame(
+animateFireworks
+);
+
 
 }
 
 
-setInterval(firework,1500);
 
-animate();
+
+setInterval(
+createFirework,
+1200
+);
+
+
+animateFireworks();
+
+
+
+
+
+
+
+// ================================
+// HEART FLOAT EFFECT
+// ================================
+
+
+function createHeart(){
+
+
+let heart =
+document.createElement("div");
+
+
+heart.innerHTML="💖";
+
+
+heart.style.position="fixed";
+
+
+heart.style.left =
+Math.random()*100+"%";
+
+
+heart.style.bottom="-20px";
+
+
+heart.style.fontSize =
+"25px";
+
+
+heart.style.zIndex="3";
+
+
+heart.style.animation=
+"heartMove 5s linear";
+
+
+
+document.body.appendChild(heart);
+
+
+
+setTimeout(()=>{
+
+heart.remove();
+
+},5000);
+
+
+}
+
+
+
+setInterval(
+createHeart,
+700
+);
