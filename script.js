@@ -146,15 +146,15 @@ musicPlaying=!musicPlaying;
 
 const photos=[
 
-"photo1.jpg",
+"1.png",
 
-"photo2.jpg",
+"2.png",
 
-"photo3.jpg",
+"3.png",
 
-"photo4.jpg",
+"4.png",
 
-"photo5.jpg"
+"5.png"
 
 ];
 
