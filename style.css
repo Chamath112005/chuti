@@ -217,3 +217,49 @@ p {
     .title-lg { font-size: 40px; }
     .photo-frame { width: 220px; height: 280px; }
 }
+
+/* GALLERY CLICK CONTROLS */
+.sub-text {
+    font-size: 14px;
+    margin-bottom: 12px;
+    opacity: 0.8;
+}
+
+.photo-frame {
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s ease;
+}
+
+.photo-frame:active {
+    transform: scale(0.97);
+}
+
+.gallery-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.btn-sub {
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: var(--accent-color);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-sub:hover {
+    background: white;
+}
+
+#photoCounter {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-primary);
+}
