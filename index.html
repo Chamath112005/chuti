@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,81 +12,232 @@
 
 </head>
 
+
 <body>
 
-<!-- Loading Screen -->
-<div id="loader">
-    <div class="loader-text">
-        ✨ Creating Magic For Chuti ✨
+
+<!-- LOADING SCREEN -->
+
+<div id="loading">
+
+    <div class="loading-box">
+
+        <div class="heart">💖</div>
+
+        <h2>Creating A Special Memory...</h2>
+
+        <p>For Chuti ✨</p>
+
     </div>
+
 </div>
 
 
-<!-- Music -->
-<audio id="music" loop>
+
+<!-- MUSIC -->
+
+<audio id="bgMusic" loop>
+
     <source src="assets/music/birthday.mp3" type="audio/mp3">
+
 </audio>
 
 
-<button id="musicBtn">🎵</button>
+
+<button id="musicControl">
+🎵
+</button>
 
 
-<!-- Floating Elements -->
-<div class="balloons">
-🎈 🎈 🎈 🎈 🎈
+
+
+<!-- PAGE CONTAINER -->
+
+<div class="pages">
+
+
+
+<!-- PAGE 1 : WELCOME -->
+
+<section class="page active" id="welcome">
+
+
+<div class="stars">
+✨ ✨ ✨
 </div>
 
 
-<section class="hero">
+<h3>
+A Little Surprise For You
+</h3>
 
-<h2>
-A Special Birthday Celebration For
-</h2>
 
 <h1>
 Chuti 💖
 </h1>
 
+
+<p>
+Someone special is celebrating today...
+</p>
+
+
+<button onclick="nextPage()">
+
+Enter Celebration ✨
+
+</button>
+
+
+</section>
+
+
+
+
+
+<!-- PAGE 2 : HERO -->
+
+
+<section class="page" id="hero">
+
+
+<h2>
+A Special Birthday Celebration For
+</h2>
+
+
+<h1>
+Chuti 💖
+</h1>
+
+
 <h3>
 🎂 Happy 12th Birthday 🎂
 </h3>
 
-<button onclick="startMusic()">
-Start Celebration ✨
+
+
+<div class="balloons">
+
+🎈 🎈 🎈 🎈
+
+</div>
+
+
+
+<button onclick="nextPage()">
+
+Start The Magic 🌸
+
 </button>
+
 
 </section>
 
 
 
-<!-- Slideshow -->
 
-<section class="gallery">
 
-<h2>
+
+
+<!-- PAGE 3 : CAKE -->
+
+
+<section class="page" id="cakePage">
+
+
+<h1>
+🎂 Birthday Cake 🎂
+</h1>
+
+
+
+<div class="cake">
+
+🎂
+
+</div>
+
+
+<p>
+
+Make a beautiful wish ✨
+
+</p>
+
+
+<button onclick="nextPage()">
+
+Open Memories 📸
+
+</button>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- PAGE 4 : PHOTOS -->
+
+
+<section class="page" id="gallery">
+
+
+<h1>
 Beautiful Memories 📸
-</h2>
+</h1>
 
-<div class="slider">
 
-<img id="slide"
+<div class="photo-box">
+
+<img id="photoSlider"
+
 src="assets/images/photo1.jpg">
 
 </div>
 
+
+
+<button onclick="nextPage()">
+
+Continue 💕
+
+</button>
+
+
 </section>
 
 
 
-<!-- Message -->
 
-<section class="message">
 
-<h2>
+
+
+
+<!-- PAGE 5 : MESSAGE -->
+
+
+<section class="page" id="message">
+
+
+<div class="letter">
+
+
+<h1>
 💌 Birthday Message
-</h2>
+</h1>
+
 
 <p>
+
+Dear Chuti,
+
+<br><br>
 
 Every birthday is a new beginning,
 and today is the start of another amazing
@@ -92,38 +245,83 @@ chapter in your life.
 
 <br><br>
 
-Happy 12th Birthday, Chuti! 🎂💖
+Happy 12th Birthday! 🎂💖
 
 <br><br>
 
-May your days always be filled with love,
-laughter, happiness and beautiful dreams. ✨
+May your days always be filled with
+love, laughter and beautiful dreams.
+
+✨
 
 </p>
+
+
+</div>
+
+
+
+<button onclick="nextPage()">
+
+Final Surprise 🎆
+
+</button>
+
 
 </section>
 
 
 
-<!-- Finale -->
 
-<section class="finale">
+
+
+
+
+
+<!-- PAGE 6 : FINAL -->
+
+
+<section class="page" id="final">
+
 
 <h1>
+
 🎉 Happy Birthday Chuti 🎉
+
 </h1>
 
+
 <p>
-Keep smiling and shining always 💖
+
+Keep smiling and shining always 💖✨
+
 </p>
+
+
+
+<div class="fireworks">
+
+✨ 🎆 ✨ 🎆 ✨
+
+</div>
+
+
 
 </section>
 
 
-<canvas id="fireworks"></canvas>
+
+
+
+
+</div>
+
+
 
 
 <script src="script.js"></script>
 
+
 </body>
+
 </html>
