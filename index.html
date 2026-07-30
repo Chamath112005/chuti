@@ -34,7 +34,8 @@
                 <span class="badge">Special Day ✨</span>
                 <h1>Happy Birthday, <br><span class="highlight">Chuti! 🌸</span></h1>
                 <p>To the sweetest little sister who brings so much joy into our lives.</p>
-                <button class="btn-primary" onclick="nextPage()">Open Wish 💖</button>
+                <!-- Me button eka click කරපු ගමන් Music eka Play වෙනවා -->
+                <button class="btn-primary" onclick="startExperience()">Open Wish 💖</button>
             </div>
         </section>
 
@@ -61,14 +62,23 @@
             </div>
         </section>
 
-        <!-- PAGE 4: GALLERY -->
+        <!-- PAGE 4: GALLERY (CLICK TO CHANGE PHOTOS) -->
         <section class="page" id="gallery">
             <div class="glass-card gallery-card">
                 <h2>Sweet Memories 📸</h2>
-                <div class="photo-frame">
+                <p class="sub-text">Click the photo or buttons to view next! 💖</p>
+                
+                <div class="photo-frame" onclick="nextPhoto()">
                     <img id="photoSlider" src="1.png" alt="Chuti Memory">
                 </div>
-                <button class="btn-primary" onclick="nextPage()">Read My Letter 💌</button>
+
+                <div class="gallery-controls">
+                    <button class="btn-sub" onclick="prevPhoto()">◀ Prev</button>
+                    <span id="photoCounter">1 / 5</span>
+                    <button class="btn-sub" onclick="nextPhoto()">Next ▶</button>
+                </div>
+
+                <button class="btn-primary" style="margin-top: 15px;" onclick="nextPage()">Read My Letter 💌</button>
             </div>
         </section>
 
