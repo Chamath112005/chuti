@@ -54,43 +54,83 @@ function nextPage(){
 
 
 // ================================
-// MUSIC CONTROL
-// ================================
+// MUSIC SYSTEM
+
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicControl");
+
+let musicPlaying = false;
 
 
-const music =
-document.getElementById("bgMusic");
+// try autoplay
+
+window.addEventListener("load",()=>{
+
+    music.volume = 0.6;
+
+    let playPromise = music.play();
+
+    if(playPromise !== undefined){
+
+        playPromise
+        .then(()=>{
+
+            musicPlaying=true;
+            musicBtn.innerHTML="⏸️";
+
+        })
+        .catch(()=>{
+
+            console.log(
+            "Autoplay blocked by browser"
+            );
+
+        });
+
+    }
+
+});
 
 
-const musicBtn =
-document.getElementById("musicControl");
+
+// first button click start music
+
+document.querySelector(".page button")
+.addEventListener("click",()=>{
+
+    music.play();
+
+    musicPlaying=true;
+
+    musicBtn.innerHTML="⏸️";
+
+});
 
 
-let musicPlaying=false;
 
 
+
+// Music button
 
 musicBtn.onclick=function(){
 
+if(musicPlaying){
 
-    if(musicPlaying){
+    music.pause();
 
-        music.pause();
+    musicBtn.innerHTML="🎵";
 
-        musicBtn.innerHTML="🎵";
+}
+else{
 
-    }
+    music.play();
 
-    else{
+    musicBtn.innerHTML="⏸️";
 
-        music.play();
-
-        musicBtn.innerHTML="⏸️";
-
-    }
+}
 
 
-    musicPlaying=!musicPlaying;
+musicPlaying=!musicPlaying;
 
 
 };
@@ -99,38 +139,12 @@ musicBtn.onclick=function(){
 
 
 
-// Start music after first button
-
-document.querySelectorAll("button")[0]
-.addEventListener("click",()=>{
 
 
-    music.play()
-    .catch(()=>{});
-
-
-    musicPlaying=true;
-
-
-    musicBtn.innerHTML="⏸️";
-
-
-});
-
-
-
-
-
-
-
-
-
-// ================================
 // PHOTO SLIDESHOW
-// ================================
 
 
-let photos=[
+const photos=[
 
 "photo1.jpg",
 
@@ -148,44 +162,46 @@ let photos=[
 let photoIndex=0;
 
 
+
 setInterval(()=>{
 
 
-    let img =
-    document.getElementById("photoSlider");
+const image =
+document.getElementById("photoSlider");
 
 
-    if(!img) return;
-
-
-
-    photoIndex++;
-
-
-    if(photoIndex>=photos.length){
-
-        photoIndex=0;
-
-    }
+if(!image) return;
 
 
 
-    img.style.opacity="0";
+photoIndex++;
+
+
+if(photoIndex >= photos.length){
+
+photoIndex=0;
+
+}
 
 
 
-    setTimeout(()=>{
+image.style.opacity="0";
 
 
-        img.src =
-        "assets/images/"
-        +photos[photoIndex];
+
+setTimeout(()=>{
 
 
-        img.style.opacity="1";
+image.src =
+"assets/images/"
++
+photos[photoIndex];
 
 
-    },500);
+image.style.opacity="1";
+
+
+},500);
 
 
 
